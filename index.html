@@ -1,0 +1,865 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+
+    <style>
+        body {
+            background: #000000;
+
+            overflow-y: scroll;
+        }
+
+        tr {
+            position: relative;
+            z-index: 1;
+            color: #b8905f;
+            border-top: 2px solid #131111 !important;
+            padding: 7px 10px !important;
+            background: #211b14 !important;
+            cursor: pointer;
+        }
+
+        tr td {
+
+            border-top: 2px solid #131111 !important;
+        }
+
+        #tblMaps {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #tblMaps tbody tr td:nth-child(2),
+        #tblMaps tbody tr td:nth-child(3) {
+            text-align: right;
+
+        }
+
+        .dataTables_wrapper .dataTables_filter {
+            width: 100%;
+            text-align: center;
+        }
+
+        #tblMaps_filter input {
+            background-color: black;
+            border-radius: 1px;
+            border: 1px solid #88623b;
+            color: white;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <br />
+    <div class="col-md-12">
+        <table id="tblMaps">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Tier</th>
+                    <th>Awakening Bonus Required</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-name="malformation" data-tier="16" data-bonus="7">
+                    <td>Malformation</td>
+                    <td>16</td>
+                    <td>7</td>
+                </tr>
+                <tr data-name="precinct" data-tier="15" data-bonus="4">
+                    <td>Precinct</td>
+                    <td>15</td>
+                    <td>4</td>
+                </tr>
+                <tr data-name="dig" data-tier="15" data-bonus="6">
+                    <td>Dig</td>
+                    <td>15</td>
+                    <td>6</td>
+                </tr>
+                <tr data-name="shrine" data-tier="16" data-bonus="7">
+                    <td>Shrine</td>
+                    <td>16</td>
+                    <td>7</td>
+                </tr>
+                <tr data-name="castle ruins" data-tier="15" data-bonus="3">
+                    <td>Castle Ruins</td>
+                    <td>15</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="grotto" data-tier="15" data-bonus="8">
+                    <td>Grotto</td>
+                    <td>15</td>
+                    <td>8</td>
+                </tr>
+                <tr data-name="vaults of atziri" data-tier="14" data-bonus="2">
+                    <td>Vaults of Atziri</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="conservatory" data-tier="14" data-bonus="2">
+                    <td>Conservatory</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="leyline" data-tier="14" data-bonus="2">
+                    <td>Leyline</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="chateau" data-tier="16" data-bonus="3">
+                    <td>Chateau</td>
+                    <td>16</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="terrace" data-tier="15" data-bonus="8">
+                    <td>Terrace</td>
+                    <td>15</td>
+                    <td>8</td>
+                </tr>
+                <tr data-name="academy" data-tier="14" data-bonus="2">
+                    <td>Academy</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="vaal pyramid" data-tier="14" data-bonus="2">
+                    <td>Vaal Pyramid</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="perandus manor" data-tier="16" data-bonus="3">
+                    <td>Perandus Manor</td>
+                    <td>16</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="phantasmagoria" data-tier="15" data-bonus="2">
+                    <td>Phantasmagoria</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="basilica" data-tier="16" data-bonus="3">
+                    <td>Basilica</td>
+                    <td>16</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="vinktar's square" data-tier="15" data-bonus="2">
+                    <td>Vinktar's Square</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="primordial blocks" data-tier="16" data-bonus="6">
+                    <td>Primordial Blocks</td>
+                    <td>16</td>
+                    <td>6</td>
+                </tr>
+                <tr data-name="courtyard" data-tier="15" data-bonus="2">
+                    <td>Courtyard</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="summit" data-tier="16" data-bonus="8">
+                    <td>Summit</td>
+                    <td>16</td>
+                    <td>8</td>
+                </tr>
+                <tr data-name="courthouse" data-tier="15" data-bonus="5">
+                    <td>Courthouse</td>
+                    <td>15</td>
+                    <td>5</td>
+                </tr>
+                <tr data-name="park" data-tier="15" data-bonus="2">
+                    <td>Park</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="cage" data-tier="14" data-bonus="2">
+                    <td>Cage</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="sunken city" data-tier="16" data-bonus="7">
+                    <td>Sunken City</td>
+                    <td>16</td>
+                    <td>7</td>
+                </tr>
+                <tr data-name="acid caverns" data-tier="15" data-bonus="8">
+                    <td>Acid Caverns</td>
+                    <td>15</td>
+                    <td>8</td>
+                </tr>
+                <tr data-name="waste pool" data-tier="15" data-bonus="2">
+                    <td>Waste Pool</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="the twilight temple" data-tier="14" data-bonus="2">
+                    <td>The Twilight Temple</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="moon temple" data-tier="14" data-bonus="2">
+                    <td>Moon Temple</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="arcade" data-tier="14" data-bonus="2">
+                    <td>Arcade</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="temple" data-tier="14" data-bonus="2">
+                    <td>Temple</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="the putrid cloister" data-tier="14" data-bonus="2">
+                    <td>The Putrid Cloister</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="coward's trial" data-tier="14" data-bonus="1">
+                    <td>Coward's Trial</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="cursed crypt" data-tier="14" data-bonus="1">
+                    <td>Cursed Crypt</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="poorjoy's asylum" data-tier="14" data-bonus="2">
+                    <td>Poorjoy's Asylum</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="museum" data-tier="14" data-bonus="2">
+                    <td>Museum</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="laboratory" data-tier="14" data-bonus="1">
+                    <td>Laboratory</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="iceberg" data-tier="14" data-bonus="5">
+                    <td>Iceberg</td>
+                    <td>14</td>
+                    <td>5</td>
+                </tr>
+                <tr data-name="waterways" data-tier="16" data-bonus="2">
+                    <td>Waterways</td>
+                    <td>16</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="primordial pools" data-tier="15" data-bonus="2">
+                    <td>Primordial Pools</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="spider forest" data-tier="14" data-bonus="7">
+                    <td>Spider Forest</td>
+                    <td>14</td>
+                    <td>7</td>
+                </tr>
+                <tr data-name="city square" data-tier="14" data-bonus="6">
+                    <td>City Square</td>
+                    <td>14</td>
+                    <td>6</td>
+                </tr>
+                <tr data-name="death and taxes" data-tier="15" data-bonus="8">
+                    <td>Death and Taxes</td>
+                    <td>15</td>
+                    <td>8</td>
+                </tr>
+                <tr data-name="necropolis" data-tier="15" data-bonus="8">
+                    <td>Necropolis</td>
+                    <td>15</td>
+                    <td>8</td>
+                </tr>
+                <tr data-name="ghetto" data-tier="14" data-bonus="6">
+                    <td>Ghetto</td>
+                    <td>14</td>
+                    <td>6</td>
+                </tr>
+                <tr data-name="maelstrom of chaos" data-tier="14" data-bonus="3">
+                    <td>Maelstr&#246;m of Chaos</td>
+                    <td>14</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="tropical island" data-tier="14" data-bonus="3">
+                    <td>Tropical Island</td>
+                    <td>14</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="alleyways" data-tier="14" data-bonus="1">
+                    <td>Alleyways</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="atoll" data-tier="14" data-bonus="3">
+                    <td>Atoll</td>
+                    <td>14</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="whakawairua tuahu" data-tier="14" data-bonus="1">
+                    <td>Whakawairua Tuahu</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="strand" data-tier="14" data-bonus="1">
+                    <td>Strand</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="wharf" data-tier="14" data-bonus="1">
+                    <td>Wharf</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="collonade" data-tier="16" data-bonus="2">
+                    <td>Collonade</td>
+                    <td>16</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="lava chamber" data-tier="16" data-bonus="2">
+                    <td>Lava Chamber</td>
+                    <td>16</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="cells" data-tier="15" data-bonus="5">
+                    <td>Cells</td>
+                    <td>15</td>
+                    <td>5</td>
+                </tr>
+                <tr data-name="pen" data-tier="14" data-bonus="2">
+                    <td>Pen</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="plaza" data-tier="16" data-bonus="2">
+                    <td>Plaza</td>
+                    <td>16</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="channel" data-tier="15" data-bonus="7">
+                    <td>Channel</td>
+                    <td>15</td>
+                    <td>7</td>
+                </tr>
+                <tr data-name="flooded mine" data-tier="14" data-bonus="5">
+                    <td>Flooded Mine</td>
+                    <td>14</td>
+                    <td>5</td>
+                </tr>
+                <tr data-name="fungal hollow" data-tier="14" data-bonus="1">
+                    <td>Fungal Hollow</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="shore" data-tier="15" data-bonus="2">
+                    <td>Shore</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="moa kun" data-tier="15" data-bonus="2">
+                    <td>Moa Kun</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="infested valley" data-tier="14" data-bonus="7">
+                    <td>Infested Valley</td>
+                    <td>14</td>
+                    <td>7</td>
+                </tr>
+                <tr data-name="excavation" data-tier="14" data-bonus="3">
+                    <td>Excavation</td>
+                    <td>14</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="marshes" data-tier="14" data-bonus="3">
+                    <td>Marshes</td>
+                    <td>14</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="beach" data-tier="14" data-bonus="1">
+                    <td>Beach</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="coves" data-tier="15" data-bonus="2">
+                    <td>Coves</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="valut" data-tier="14" data-bonus="2">
+                    <td>Valut</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="dungeon" data-tier="14" data-bonus="6">
+                    <td>Dungeon</td>
+                    <td>14</td>
+                    <td>6</td>
+                </tr>
+                <tr data-name="spider lair" data-tier="14" data-bonus="7">
+                    <td>Spider Lair</td>
+                    <td>14</td>
+                    <td>7</td>
+                </tr>
+                <tr data-name="sulphure vents" data-tier="14" data-bonus="1">
+                    <td>Sulphure Vents</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="racecourse" data-tier="14" data-bonus="2">
+                    <td>Racecourse</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="armoury" data-tier="14" data-bonus="1">
+                    <td>Armoury</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="glacier" data-tier="14" data-bonus="1">
+                    <td>Glacier</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="ramparts" data-tier="14" data-bonus="1">
+                    <td>Ramparts</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="vaal temple" data-tier="16" data-bonus="8">
+                    <td>Vaal Temple</td>
+                    <td>16</td>
+                    <td>8</td>
+                </tr>
+                <tr data-name="factory" data-tier="14" data-bonus="5">
+                    <td>Factory</td>
+                    <td>14</td>
+                    <td>5</td>
+                </tr>
+                <tr data-name="pier" data-tier="14" data-bonus="1">
+                    <td>Pier</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="villa" data-tier="14" data-bonus="1">
+                    <td>Villa</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="scriptorium" data-tier="14" data-bonus="3">
+                    <td>Scriptorium</td>
+                    <td>14</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="peninsula" data-tier="14" data-bonus="1">
+                    <td>Peninsula</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="action's nightmare" data-tier="16" data-bonus="7">
+                    <td>Action's Nightmare</td>
+                    <td>16</td>
+                    <td>7</td>
+                </tr>
+                <tr data-name="overgrown shrine" data-tier="16" data-bonus="7">
+                    <td>Overgrown Shrine</td>
+                    <td>16</td>
+                    <td>7</td>
+                </tr>
+                <tr data-name="graveyard" data-tier="14" data-bonus="1">
+                    <td>Graveyard</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="mineral pools" data-tier="14" data-bonus="7">
+                    <td>Mineral Pools</td>
+                    <td>14</td>
+                    <td>7</td>
+                </tr>
+                <tr data-name="lookout" data-tier="14" data-bonus="1">
+                    <td>Lookout</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="overgrown ruin" data-tier="15" data-bonus="2">
+                    <td>Overgrown Ruin</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="lighthouse" data-tier="15" data-bonus="5">
+                    <td>Lighthouse</td>
+                    <td>15</td>
+                    <td>5</td>
+                </tr>
+                <tr data-name="burial chambers" data-tier="14" data-bonus="3">
+                    <td>Burial Chambers</td>
+                    <td>14</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="crater" data-tier="14" data-bonus="6">
+                    <td>Crater</td>
+                    <td>14</td>
+                    <td>6</td>
+                </tr>
+                <tr data-name="hall of grand masters" data-tier="16" data-bonus="8">
+                    <td>Hall of Grand Masters</td>
+                    <td>16</td>
+                    <td>8</td>
+                </tr>
+                <tr data-name="promenade" data-tier="16" data-bonus="8">
+                    <td>Promenade</td>
+                    <td>16</td>
+                    <td>8</td>
+                </tr>
+                <tr data-name="mesa" data-tier="14" data-bonus="2">
+                    <td>Mesa</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="mud geyser" data-tier="14" data-bonus="2">
+                    <td>Mud Geyser</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="wasteland" data-tier="14" data-bonus="2">
+                    <td>Wasteland</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="geode" data-tier="15" data-bonus="2">
+                    <td>Geode</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="tower" data-tier="16" data-bonus="3">
+                    <td>Tower</td>
+                    <td>16</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="esturary" data-tier="15" data-bonus="2">
+                    <td>Esturary</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="relic chambers" data-tier="14" data-bonus="2">
+                    <td>Relic Chambers</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="siege" data-tier="15" data-bonus="4">
+                    <td>Siege</td>
+                    <td>15</td>
+                    <td>4</td>
+                </tr>
+                <tr data-name="colloseum" data-tier="??" data-bonus="??">
+                    <td>Colloseum</td>
+                    <td>??</td>
+                    <td>??</td>
+                </tr>
+                <tr data-name="defiled catherdral" data-tier="14" data-bonus="2">
+                    <td>Defiled Catherdral</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="arachnid tomb" data-tier="15" data-bonus="2">
+                    <td>Arachnid Tomb</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="ancient city" data-tier="14" data-bonus="2">
+                    <td>Ancient City</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="gardens" data-tier="16" data-bonus="5">
+                    <td>Gardens</td>
+                    <td>16</td>
+                    <td>5</td>
+                </tr>
+                <tr data-name="dark forest" data-tier="??" data-bonus="??">
+                    <td>Dark Forest</td>
+                    <td>??</td>
+                    <td>??</td>
+                </tr>
+                <tr data-name="palace" data-tier="15" data-bonus="8">
+                    <td>Palace</td>
+                    <td>15</td>
+                    <td>8</td>
+                </tr>
+                <tr data-name="toxic sewer" data-tier="15" data-bonus="2">
+                    <td>Toxic Sewer</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="sepulchere" data-tier="15" data-bonus="6">
+                    <td>Sepulchere</td>
+                    <td>15</td>
+                    <td>6</td>
+                </tr>
+                <tr data-name="desert spring" data-tier="15" data-bonus="8">
+                    <td>Desert Spring</td>
+                    <td>15</td>
+                    <td>8</td>
+                </tr>
+                <tr data-name="bazaar" data-tier="15" data-bonus="2">
+                    <td>Bazaar</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="underground river" data-tier="16" data-bonus="7">
+                    <td>Underground River</td>
+                    <td>16</td>
+                    <td>7</td>
+                </tr>
+                <tr data-name="plateau" data-tier="16" data-bonus="7">
+                    <td>Plateau</td>
+                    <td>16</td>
+                    <td>7</td>
+                </tr>
+                <tr data-name="caer blaidd" data-tier="16" data-bonus="7">
+                    <td>Caer Blaidd</td>
+                    <td>16</td>
+                    <td>7</td>
+                </tr>
+                <tr data-name="doryani's machinarium" data-tier="14" data-bonus="5">
+                    <td>Doryani's Machinarium</td>
+                    <td>14</td>
+                    <td>5</td>
+                </tr>
+                <tr data-name="bog" data-tier="14" data-bonus="2">
+                    <td>Bog</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="deset" data-tier="14" data-bonus="1">
+                    <td>Deset</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="port" data-tier="15" data-bonus="3">
+                    <td>Port</td>
+                    <td>15</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="maze" data-tier="14" data-bonus="5">
+                    <td>Maze</td>
+                    <td>14</td>
+                    <td>5</td>
+                </tr>
+                <tr data-name="arsenal" data-tier="14" data-bonus="2">
+                    <td>Arsenal</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="fields" data-tier="14" data-bonus="1">
+                    <td>Fields</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="ivory temple" data-tier="14" data-bonus="7">
+                    <td>Ivory Temple</td>
+                    <td>14</td>
+                    <td>7</td>
+                </tr>
+                <tr data-name="dunes" data-tier="14" data-bonus="2">
+                    <td>Dunes</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="jungle valley" data-tier="14" data-bonus="1">
+                    <td>Jungle Valley</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="arid lake" data-tier="14" data-bonus="3">
+                    <td>Arid Lake</td>
+                    <td>14</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="underground sea" data-tier="14" data-bonus="1">
+                    <td>Underground Sea</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="pillars of arun" data-tier="14" data-bonus="2">
+                    <td>Pillars of Arun</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="mausoleum" data-tier="14" data-bonus="1">
+                    <td>Mausoleum</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="residence" data-tier="14" data-bonus="3">
+                    <td>Residence</td>
+                    <td>14</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="coral ruins" data-tier="15" data-bonus="8">
+                    <td>Coral Ruins</td>
+                    <td>15</td>
+                    <td>8</td>
+                </tr>
+                <tr data-name="crystal ore" data-tier="16" data-bonus="2">
+                    <td>Crystal Ore</td>
+                    <td>16</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="haunted mansion" data-tier="14" data-bonus="1">
+                    <td>Haunted Mansion</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="ashen wood" data-tier="14" data-bonus="1">
+                    <td>Ashen Wood</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="belfry" data-tier="14" data-bonus="2">
+                    <td>Belfry</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="hallowed ground" data-tier="14" data-bonus="2">
+                    <td>Hallowed Ground</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="orchard" data-tier="14" data-bonus="1">
+                    <td>Orchard</td>
+                    <td>14</td>
+                    <td>1</td>
+                </tr>
+                <tr data-name="cemetery" data-tier="14" data-bonus="2">
+                    <td>Cemetery</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="arena" data-tier="14" data-bonus="2">
+                    <td>Arena</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="core" data-tier="15" data-bonus="6">
+                    <td>Core</td>
+                    <td>15</td>
+                    <td>6</td>
+                </tr>
+                <tr data-name="lava lake" data-tier="15" data-bonus="8">
+                    <td>Lava Lake</td>
+                    <td>15</td>
+                    <td>8</td>
+                </tr>
+                <tr data-name="carcass" data-tier="16" data-bonus="8">
+                    <td>Carcass</td>
+                    <td>16</td>
+                    <td>8</td>
+                </tr>
+                <tr data-name="barrows" data-tier="15" data-bonus="2">
+                    <td>Barrows</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="arachnid nest" data-tier="14" data-bonus="6">
+                    <td>Arachnid Nest</td>
+                    <td>14</td>
+                    <td>6</td>
+                </tr>
+                <tr data-name="pit" data-tier="14" data-bonus="2">
+                    <td>Pit</td>
+                    <td>14</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="caldera" data-tier="15" data-bonus="3">
+                    <td>Caldera</td>
+                    <td>15</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="lair" data-tier="15" data-bonus="4">
+                    <td>Lair</td>
+                    <td>15</td>
+                    <td>4</td>
+                </tr>
+                <tr data-name="crimson temple" data-tier="16" data-bonus="7">
+                    <td>Crimson Temple</td>
+                    <td>16</td>
+                    <td>7</td>
+                </tr>
+                <tr data-name="thicket" data-tier="15" data-bonus="2">
+                    <td>Thicket</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="olmec's sanctum" data-tier="15" data-bonus="2">
+                    <td>Olmec's Sanctum</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="bone crypt" data-tier="15" data-bonus="2">
+                    <td>Bone Crypt</td>
+                    <td>15</td>
+                    <td>2</td>
+                </tr>
+                <tr data-name="reef" data-tier="15" data-bonus="3">
+                    <td>Reef</td>
+                    <td>15</td>
+                    <td>3</td>
+                </tr>
+                <tr data-name="shipyard" data-tier="16" data-bonus="5">
+                    <td>Shipyard</td>
+                    <td>16</td>
+                    <td>5</td>
+                </tr>
+                <tr data-name="canyon" data-tier="16" data-bonus="3">
+                    <td>Canyon</td>
+                    <td>16</td>
+                    <td>3</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+    crossorigin="anonymous"></script>
+
+<script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $('#tblMaps').DataTable({
+            "paging": false,
+            "info": false,
+            dom: "ftip",
+            language: {
+                searchPlaceholder: "Search here",
+                search: ""
+            }
+        });
+    });
+
+
+</script>
+
+</html>
